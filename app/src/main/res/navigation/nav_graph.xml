@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.applieltan.FirstFragment"
+        android:name="com.example.applieltan.Presentation.list.XmenCharactersFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_xmen_characters">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
