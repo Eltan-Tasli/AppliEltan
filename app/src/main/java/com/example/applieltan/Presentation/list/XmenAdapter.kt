@@ -7,8 +7,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.applieltan.R
 
-class XmenAdapter(private var dataSet: List<Xmen>) :
+class XmenAdapter(private var dataSet: List<Xmen>, var listener: ((Xmen)->Unit)? = null) :
     RecyclerView.Adapter<XmenAdapter.ViewHolder>() {
+
 
     /**
      * Provide a reference to the type of views that you are using
@@ -44,6 +45,9 @@ class XmenAdapter(private var dataSet: List<Xmen>) :
         // contents of the view with that element
         val xmen :Xmen = dataSet[position]
         viewHolder.textView.text = xmen.name
+        viewHolder.itemView.setOnClickListener {
+            listener?.invoke(xmen)
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)

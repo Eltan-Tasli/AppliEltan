@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.applieltan.Presentation.api.XmenApi
 import com.example.applieltan.Presentation.api.XmenResponse
 import com.example.applieltan.R
-import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,7 +25,8 @@ class XmenCharactersFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
 
-    private val adapter = XmenAdapter(listOf())
+    private val adapter = XmenAdapter(listOf(), ::onClickedXmen)
+
     private val layoutManager = LinearLayoutManager(context)
 
     override fun onCreateView(
@@ -67,5 +68,9 @@ class XmenCharactersFragment : Fragment() {
         })
 
 
+    }
+
+    private fun onClickedXmen(xmen: Xmen) {
+        findNavController().navigate(R.id.navigateToXmenDetailFragment)
     }
 }

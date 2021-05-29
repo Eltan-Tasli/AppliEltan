@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/XmenCharactersFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/XmenCharactersFragment"
         android:name="com.example.applieltan.Presentation.list.XmenCharactersFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_xmen_characters">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/navigateToXmenDetailFragment"
+            app:destination="@id/XmenDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/XmenDetailFragment"
         android:name="com.example.applieltan.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/navigateToXmenCharactersFragment"
+            app:destination="@id/XmenCharactersFragment" />
     </fragment>
 </navigation>
