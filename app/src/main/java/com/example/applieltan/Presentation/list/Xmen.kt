@@ -1,5 +1,6 @@
 package com.example.applieltan.Presentation.list
 
 data class Xmen(
-    val name: String
+    val name: String,
+    val url: String
 )

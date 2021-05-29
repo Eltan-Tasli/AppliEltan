@@ -1,15 +1,22 @@
 package com.example.applieltan.Presentation.list
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.applieltan.Presentation.api.XmenApi
+import com.example.applieltan.Presentation.api.XmenResponse
 import com.example.applieltan.R
+import com.google.gson.Gson
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -38,13 +45,26 @@ class XmenCharactersFragment : Fragment() {
             adapter = this@XmenCharactersFragment.adapter
         }
 
-        val xmenList :ArrayList<Xmen> = arrayListOf<Xmen>().apply {
-            add(Xmen("Wolverine"))
-            add(Xmen("Xavier"))
-            add(Xmen("Cyclope"))
-        }
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://xmenapiheroku.herokuapp.com")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
-        adapter.updateList(xmenList)
+        val xmenApi: XmenApi = retrofit.create(XmenApi::class.java)
+
+        xmenApi.getXmenList().enqueue(object: Callback<XmenResponse>{
+            override fun onFailure(call: Call<XmenResponse>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onResponse(call: Call<XmenResponse>, response: Response<XmenResponse>) {
+                if(response.isSuccessful && response.body() != null){
+                    val xmenResponse : XmenResponse = response.body()!!
+                    adapter.updateList(xmenResponse.results)
+                }
+            }
+
+        })
 
 
     }
