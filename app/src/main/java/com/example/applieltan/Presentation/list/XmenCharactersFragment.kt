@@ -8,8 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.applieltan.Presentation.Singletons
 import com.example.applieltan.Presentation.api.XmenApi
-import com.example.applieltan.Presentation.api.XmenResponse
+import com.example.applieltan.Presentation.api.XmenCharactersResponse
 import com.example.applieltan.R
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,8 +28,6 @@ class XmenCharactersFragment : Fragment() {
 
     private val adapter = XmenAdapter(listOf(), ::onClickedXmen)
 
-    private val layoutManager = LinearLayoutManager(context)
-
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -42,25 +41,19 @@ class XmenCharactersFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.xmen_recyclerview)
         recyclerView.apply {
-            layoutManager = this@XmenCharactersFragment.layoutManager
+            layoutManager = LinearLayoutManager(context)
             adapter = this@XmenCharactersFragment.adapter
         }
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://xmenapiheroku.herokuapp.com")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
 
-        val xmenApi: XmenApi = retrofit.create(XmenApi::class.java)
-
-        xmenApi.getXmenList().enqueue(object: Callback<XmenResponse>{
-            override fun onFailure(call: Call<XmenResponse>, t: Throwable) {
+        Singletons.xmenApi.getXmenList().enqueue(object: Callback<XmenCharactersResponse>{
+            override fun onFailure(call: Call<XmenCharactersResponse>, t: Throwable) {
                 TODO("Not yet implemented")
             }
 
-            override fun onResponse(call: Call<XmenResponse>, response: Response<XmenResponse>) {
+            override fun onResponse(call: Call<XmenCharactersResponse>, response: Response<XmenCharactersResponse>) {
                 if(response.isSuccessful && response.body() != null){
-                    val xmenResponse : XmenResponse = response.body()!!
+                    val xmenResponse : XmenCharactersResponse = response.body()!!
                     adapter.updateList(xmenResponse.results)
                 }
             }

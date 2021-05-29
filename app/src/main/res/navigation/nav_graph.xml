@@ -17,9 +17,9 @@
     </fragment>
     <fragment
         android:id="@+id/XmenDetailFragment"
-        android:name="com.example.applieltan.SecondFragment"
+        android:name="com.example.applieltan.Presentation.detail.XmenDetailFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_xmen_detail">
 
         <action
             android:id="@+id/navigateToXmenCharactersFragment"
