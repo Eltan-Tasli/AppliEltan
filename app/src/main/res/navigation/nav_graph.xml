@@ -21,6 +21,11 @@
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_xmen_detail">
 
+        <argument
+            android:name="xmenId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+
         <action
             android:id="@+id/navigateToXmenCharactersFragment"
             app:destination="@id/XmenCharactersFragment" />

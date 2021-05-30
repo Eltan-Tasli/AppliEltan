@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.applieltan.R
 
-class XmenAdapter(private var dataSet: List<Xmen>, var listener: ((Xmen)->Unit)? = null) :
+class XmenAdapter(private var dataSet: List<Xmen>, var listener: ((Int)->Unit)? = null) :
     RecyclerView.Adapter<XmenAdapter.ViewHolder>() {
 
 
@@ -46,7 +46,7 @@ class XmenAdapter(private var dataSet: List<Xmen>, var listener: ((Xmen)->Unit)?
         val xmen :Xmen = dataSet[position]
         viewHolder.textView.text = xmen.name
         viewHolder.itemView.setOnClickListener {
-            listener?.invoke(xmen)
+            listener?.invoke(position)
         }
     }
 

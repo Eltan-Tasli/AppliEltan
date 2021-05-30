@@ -35,7 +35,8 @@ class XmenDetailFragment : Fragment() {
     }
 
     private fun callApi() {
-        Singletons.xmenApi.getXmenDetail("1").enqueue(object : Callback<XmenDetailResponse>{
+        val id = arguments?.getInt("xmenId") ?: -1
+        Singletons.xmenApi.getXmenDetail(id).enqueue(object : Callback<XmenDetailResponse>{
             override fun onFailure(call: Call<XmenDetailResponse>, t: Throwable) {
 
             }

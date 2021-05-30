@@ -9,5 +9,5 @@ interface XmenApi {
     fun getXmenList(): Call<XmenCharactersResponse>
 
     @GET("/api/characters/{id}")
-    fun getXmenDetail(@Path("id") id: String): Call<XmenDetailResponse>
+    fun getXmenDetail(@Path("id") id: Int): Call<XmenDetailResponse>
 }
