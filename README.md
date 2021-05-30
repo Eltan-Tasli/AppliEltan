@@ -6,6 +6,7 @@ Le logo de l'application est le logo des X-Men.
 Elle affiche la liste avec un recyclerview et les données sont stockés dans un cache HTTP.
 
 SCREENS
+<img src="https://user-images.githubusercontent.com/84334229/120110955-223f3e00-c170-11eb-8bb8-113ba3471149.png" width="50" height="50">
 ![Image_Logo_X_Men](https://user-images.githubusercontent.com/84334229/120110955-223f3e00-c170-11eb-8bb8-113ba3471149.png)
 ![Page_Liste_X_Men](https://user-images.githubusercontent.com/84334229/120110967-32efb400-c170-11eb-9473-049f95806aa7.png)
 ![Page_Description_X_Men](https://user-images.githubusercontent.com/84334229/120110987-43a02a00-c170-11eb-96e6-4bad66de7659.png)
