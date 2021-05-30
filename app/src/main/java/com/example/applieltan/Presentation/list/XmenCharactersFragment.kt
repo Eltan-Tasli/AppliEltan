@@ -54,7 +54,7 @@ class XmenCharactersFragment : Fragment() {
 
             override fun onResponse(call: Call<XmenCharactersResponse>, response: Response<XmenCharactersResponse>) {
                 if(response.isSuccessful && response.body() != null){
-                    val xmenResponse : XmenCharactersResponse = response.body()!!
+                    val xmenResponse: XmenCharactersResponse = response.body()!!
                     adapter.updateList(xmenResponse.results)
                 }
             }

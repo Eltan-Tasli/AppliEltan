@@ -19,6 +19,7 @@ import retrofit2.Response
 class XmenDetailFragment : Fragment() {
 
     private lateinit var textViewName: TextView
+    private lateinit var textViewDescription: TextView
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -31,6 +32,7 @@ class XmenDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         textViewName = view.findViewById(R.id.xmen_detail_name)
+        textViewDescription = view.findViewById(R.id.xmen_detail_description)
         callApi()
     }
 
@@ -44,6 +46,7 @@ class XmenDetailFragment : Fragment() {
             override fun onResponse(call: Call<XmenDetailResponse>, response: Response<XmenDetailResponse>) {
                 if(response.isSuccessful && response.body() != null){
                     textViewName.text = response.body()!!.name
+                    textViewDescription.text = response.body()!!.description
                 }
 
             }

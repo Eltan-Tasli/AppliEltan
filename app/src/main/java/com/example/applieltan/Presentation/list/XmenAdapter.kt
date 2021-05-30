@@ -3,8 +3,10 @@ package com.example.applieltan.Presentation.list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.applieltan.R
 
 class XmenAdapter(private var dataSet: List<Xmen>, var listener: ((Int)->Unit)? = null) :
@@ -17,10 +19,12 @@ class XmenAdapter(private var dataSet: List<Xmen>, var listener: ((Int)->Unit)? 
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView
+        val imageView: ImageView
 
         init {
             // Define click listener for the ViewHolder's View.
             textView = view.findViewById(R.id.xmen_characters)
+            imageView = view.findViewById(R.id.xmen_img)
         }
     }
 
@@ -48,6 +52,13 @@ class XmenAdapter(private var dataSet: List<Xmen>, var listener: ((Int)->Unit)? 
         viewHolder.itemView.setOnClickListener {
             listener?.invoke(position)
         }
+
+        Glide
+            .with(viewHolder.itemView.context)
+            .load("https://cdn.glitch.com/5efd623c-8d1a-4031-846f-78e99ba712ac%2F${position+1}.webp")
+            .centerCrop()
+            .into(viewHolder.imageView);
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)

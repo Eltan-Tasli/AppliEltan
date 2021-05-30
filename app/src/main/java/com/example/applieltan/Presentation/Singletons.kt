@@ -13,14 +13,14 @@ class Singletons {
     companion object {
         var cache = Cache(File(context?.cacheDir, "responses"), 10 * 1024 * 1024) // 10 MiB
 
-        val okHttpClient: OkHttpClient = OkHttpClient().newBuilder()
+        val okhttpClient: OkHttpClient = OkHttpClient().newBuilder()
             .cache(cache)
             .build()
 
         val xmenApi: XmenApi = Retrofit.Builder()
                 .baseUrl("https://xmenapiheroku.herokuapp.com")
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(okHttpClient)
+                .client(okhttpClient)
                 .build()
                 .create(XmenApi::class.java)
 
